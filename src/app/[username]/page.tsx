@@ -1,6 +1,8 @@
+import prisma from '@/utils/db'
 import React from 'react'
 
 const Page = () => {
+  
   return (
     <div>Page</div>
   )

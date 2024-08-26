@@ -12,3 +12,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id                String   @id @default(uuid()) // Unique identifier for the user
+  username          String   @unique // Username for the user
+  firstName         String   // First name of the user
+  lastName          String   // Last name of the user
+  email             String   @unique // email of the user
+  bio               String?  // Optional bio for the user
+  profileImage      String?  // URL to the user's profile image, optional
+  bannerImage       String?  // URL to the user's banner image, optional
+  websiteOrSocial   String?  // Optional website or social link
+  walletAddress     String?  // Optional wallet address for the user
+  createdAt         DateTime @default(now()) // Timestamp of user creation
+  updatedAt         DateTime @updatedAt // Timestamp of the last update
+
+  @@map("user")
+} 
