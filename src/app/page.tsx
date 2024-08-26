@@ -149,8 +149,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="mt-4 text-muted-foreground">
-                  "Microfund has been a game-changer for my project. The\n platform made it easy to set up my page and
-                  start receiving\n funding from a supportive community. Highly recommended!"
+                  Microfund has been a game-changer for my project. The\n platform made it easy to set up my page and
+                  start receiving\n funding from a supportive community. Highly recommended!
                 </p>
               </div>
               <div className="bg-background p-4 rounded-lg shadow-sm">
@@ -165,8 +165,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="mt-4 text-muted-foreground">
-                  "I was able to quickly set up my Microfund page and start\n receiving support from the community. The
-                  platform is\n user-friendly and the crypto-based funding makes it easy to\n manage."
+                  I was able to quickly set up my Microfund page and start\n receiving support from the community. The
+                  platform is\n user-friendly and the crypto-based funding makes it easy to\n manage.
                 </p>
               </div>
             </div>
