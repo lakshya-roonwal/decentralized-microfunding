@@ -223,7 +223,7 @@ export const OnBoardingForm: FC<OnBoardingFormProps> = ({defaultData}) => {
                     )}
                   />
                   <FormDescription>
-                    Please ensure you've entered the correct wallet address.
+                    Please ensure you&apos;ve entered the correct wallet address.
                     This will be used for all future transactions and cannot be
                     easily changed later.
                   </FormDescription>
