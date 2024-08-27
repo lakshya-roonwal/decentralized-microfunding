@@ -40,7 +40,7 @@ const PublicPage = ({ user }: { user: User }) => {
           <div className="flex">
             <Avatar className="h-24 w-24 ring-4 ring-white sm:h-32 sm:w-32">
               <AvatarImage
-                src={user.profileImage}
+                src={user.profileImage ?? undefined}
                 alt={`${user.firstName} ${user.lastName}`}
               />
               <AvatarFallback>
@@ -70,7 +70,7 @@ const PublicPage = ({ user }: { user: User }) => {
               <div className="flex items-center space-x-2">
                 <Globe className="h-4 w-4 text-muted-foreground" />
                 <a
-                  href={user.websiteOrSocial}
+                  href={user.websiteOrSocial ?? undefined}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-primary hover:underline"
