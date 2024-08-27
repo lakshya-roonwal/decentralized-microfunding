@@ -29,11 +29,11 @@ const PublicPage = ({ user }: { user: User }) => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="relative h-64 w-full">
-        <img
-          src={user.bannerImage || "https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+        {user.bannerImage&&<img
+          src={user.bannerImage}
           alt="Banner"
           className="h-full w-full object-cover"
-        />
+        />}
       </div>
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">

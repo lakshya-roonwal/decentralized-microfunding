@@ -100,7 +100,7 @@ export default function RootLayout({
           </div>
         </SidebarBody>
       </Sidebar>
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 overflow-y-auto">
         {children}
       </main>
     </div>
