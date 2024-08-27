@@ -1,11 +1,28 @@
 import prisma from '@/utils/db'
-import React from 'react'
+import { User } from '@prisma/client'
+import { redirect } from 'next/navigation'
+import PublicPage from "./_components/PublicPage"
+import React, { FC } from 'react'
 
-const Page = () => {
-  
+export interface pageProps {
+  params: {
+    username: string
+  }
+}
+
+const PublicUserPage: FC<pageProps> = async ({ params }) => {
+
+  const userData: User | null = await prisma.user.findUnique({
+    where: { username: params.username }
+  });
+
+  if (!userData) {
+    redirect('/')
+  }
+
   return (
-    <div>Page</div>
+    <PublicPage user={userData}/>
   )
 }
 
-export default Page
+export default PublicUserPage

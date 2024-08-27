@@ -100,7 +100,7 @@ export const OnBoardingForm: FC<OnBoardingFormProps> = ({defaultData}) => {
     toast({
         title: res.message,
       })
-    router.push(`/profile/${defaultData.username}`);
+    router.push(`/dashboard/profile`);
     
 
   };
