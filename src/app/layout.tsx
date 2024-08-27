@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster"
 import { Inter } from "next/font/google";
 import {
   ClerkProvider,
@@ -22,6 +23,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
