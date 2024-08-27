@@ -1,292 +1,155 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/uFdxjFmmWUX
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import Link from "next/link"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+"use client"
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Code, Palette, Users, Coins } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
+  const [username, setUsername] = useState('')
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  }
+
   return (
-    <div className="flex flex-col min-h-[100dvh]">
+    <div className="flex flex-col min-h-screen bg-background">
       <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <CoinsIcon className="h-6 w-6" />
-          <span className="sr-only">Microfund</span>
+        <Link className="flex items-center justify-center" href="#">
+          <Code className="h-6 w-6 text-primary" />
+          <span className="ml-2 text-lg font-bold">MicroFund</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Features
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            How it Works
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Pricing
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Contact
-          </Link>
+          {/* TODO : CHANGE IF ALREADY AUTHENTICATED */}
+          <Link className={buttonVariants({ variant: "outline" })} href={"sign-in"}>Log In</Link>
+          <Link className={buttonVariants({ variant: "default" })} href={"sign-up"}>Sign Up</Link>
         </nav>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Decentralized Microfunding for Programmers
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Easily create a personal page, receive crypto-based microfunding, and build your dream projects.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link
-                    href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    prefetch={false}
-                  >
-                    Get Started
-                  </Link>
-                  <Link
-                    href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    prefetch={false}
-                  >
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-              <img
-                src="/placeholder.svg"
-                alt="Hero"
-                className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-                width="550"
-                height="550"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <motion.div
+            className="container px-4 md:px-6"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  How it Works
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">
-                  Simple, Secure, and Empowering
-                </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Create your personal page, share your project ideas, and receive crypto-based microfunding from a
-                  community of supporters. No middlemen, no hassle.
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                  Empower Your Code, Fund Your Vision
+                </h1>
+                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                  Create your personalized page, showcase your projects, and receive microfunding through crypto. Built by developers, for developers.
                 </p>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <ul className="grid gap-6">
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold text-foreground">Create a Page</h3>
-                      <p className="text-muted-foreground">
-                        Easily set up your personal page to showcase your project ideas and skills.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold text-foreground">Receive Funding</h3>
-                      <p className="text-muted-foreground">
-                        Get microfunding in crypto from a community of supporters who believe in your vision.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold text-foreground">Build and Grow</h3>
-                      <p className="text-muted-foreground">
-                        Use the funds to build your project and showcase your progress to attract more supporters.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <img
-                src="/placeholder.svg"
-                alt="Image"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-first"
-                width="550"
-                height="310"
-              />
-            </div>
-          </div>
-        </section>
-        
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Testimonials from Satisfied Users
-              </h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Hear from programmers who have successfully used our platform to fund their projects.
-              </p>
-            </div>
-            <div className="grid gap-4">
-              <div className="bg-background p-4 rounded-lg shadow-sm">
-                <div className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>JD</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h4 className="text-lg font-medium">John Doe</h4>
-                    <p className="text-sm text-muted-foreground">Full-stack Developer</p>
-                  </div>
-                </div>
-                <p className="mt-4 text-muted-foreground">
-                  Microfund has been a game-changer for my project. The\n platform made it easy to set up my page and
-                  start receiving\n funding from a supportive community. Highly recommended!
-                </p>
-              </div>
-              <div className="bg-background p-4 rounded-lg shadow-sm">
-                <div className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>SA</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h4 className="text-lg font-medium">Sarah Adams</h4>
-                    <p className="text-sm text-muted-foreground">Mobile Developer</p>
-                  </div>
-                </div>
-                <p className="mt-4 text-muted-foreground">
-                  I was able to quickly set up my Microfund page and start\n receiving support from the community. The
-                  platform is\n user-friendly and the crypto-based funding makes it easy to\n manage.
-                </p>
+              <div className="w-full max-w-sm space-y-2">
+                <motion.div>
+                  <Input
+                    className="max-w-lg flex-1"
+                    placeholder="Enter your username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </motion.div>
+                <Button className="w-full" size="lg">
+                  Get Started
+                </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Customize Your Page</h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Choose from a variety of sleek, modern themes to make your personal page stand out.
-              </p>
+          <motion.div
+            className="container px-4 md:px-6"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+              <motion.div className="flex flex-col items-center space-y-4 text-center" whileHover={{ scale: 1.05 }}>
+                <Palette className="h-10 w-10 text-primary" />
+                <h2 className="text-2xl font-bold">Customizable Themes</h2>
+                <p className="text-muted-foreground">Create a unique page that reflects your style with our customizable themes.</p>
+              </motion.div>
+              <motion.div className="flex flex-col items-center space-y-4 text-center" whileHover={{ scale: 1.05 }}>
+                <Users className="h-10 w-10 text-primary" />
+                <h2 className="text-2xl font-bold">Community-Driven</h2>
+                <p className="text-muted-foreground">Connect with like-minded developers and supporters in our thriving community.</p>
+              </motion.div>
+              <motion.div className="flex flex-col items-center space-y-4 text-center" whileHover={{ scale: 1.05 }}>
+                <Coins className="h-10 w-10 text-primary" />
+                <h2 className="text-2xl font-bold">Crypto Payments</h2>
+                <p className="text-muted-foreground">Receive funding easily and securely through various cryptocurrencies.</p>
+              </motion.div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-background p-4 rounded-lg shadow-sm">
-                <img
-                  src="/placeholder.svg"
-                  alt="Theme 1"
-                  className="rounded-lg object-cover"
-                  width="300"
-                  height="200"
-                  style={{ aspectRatio: "300/200", objectFit: "cover" }}
-                />
-                <h4 className="mt-2 text-lg font-medium">Theme 1</h4>
-              </div>
-              <div className="bg-background p-4 rounded-lg shadow-sm">
-                <img
-                  src="/placeholder.svg"
-                  alt="Theme 2"
-                  className="rounded-lg object-cover"
-                  width="300"
-                  height="200"
-                  style={{ aspectRatio: "300/200", objectFit: "cover" }}
-                />
-                <h4 className="mt-2 text-lg font-medium">Theme 2</h4>
-              </div>
-              <div className="bg-background p-4 rounded-lg shadow-sm">
-                <img
-                  src="/placeholder.svg"
-                  alt="Theme 3"
-                  className="rounded-lg object-cover"
-                  width="300"
-                  height="200"
-                  style={{ aspectRatio: "300/200", objectFit: "cover" }}
-                />
-                <h4 className="mt-2 text-lg font-medium">Theme 3</h4>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 border-t">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
-              <div className="space-y-4">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Get Started</div>
-                <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  Set Up Your Personal Page
-                </h2>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                  Follow our simple step-by-step guide to create your personal page and start receiving microfunding.
-                </p>
-                <Link
-                  href="#"
-                  className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <motion.div
+            className="container px-4 md:px-6"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">Choose Your Style</h2>
+            <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+              {['Dark', 'Light', 'Neon'].map((theme) => (
+                <motion.div
+                  key={theme}
+                  className="relative overflow-hidden rounded-lg shadow-lg"
+                  whileHover={{ scale: 1.05 }}
                 >
-                  Get Started
-                </Link>
-              </div>
-              <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">How it Works</div>
-                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  Our platform is designed to be user-friendly and secure. Create your page, share your project ideas,
-                  and start receiving crypto-based microfunding from a community of supporters.
-                </p>
-                <Link
-                  href="#"
-                  className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Learn More
-                </Link>
-              </div>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${
+                    theme === 'Dark' ? 'from-gray-900 to-gray-600' :
+                    theme === 'Light' ? 'from-blue-100 to-blue-300' :
+                    'from-purple-400 to-pink-500'
+                  }`}></div>
+                  <div className="relative p-6">
+                    <h3 className="text-2xl font-bold text-white mb-2">{theme} Theme</h3>
+                    <p className="text-white/80">Perfect for {theme.toLowerCase()} mode enthusiasts</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+          <motion.div
+            className="container px-4 md:px-6"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to Get Funded?</h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Join our community of developers and start receiving microfunding for your projects today.
+              </p>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg">Create Your Page</Button>
+              </motion.div>
+            </div>
+          </motion.div>
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 Microfund. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">© 2023 MicroFund. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
             Terms of Service
           </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
             Privacy
           </Link>
         </nav>
       </footer>
     </div>
-  )
-}
-
-function CoinsIcon(props:any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="8" cy="8" r="6" />
-      <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
-      <path d="M7 6h1v4" />
-      <path d="m16.71 13.88.7.71-2.82 2.82" />
-    </svg>
   )
 }
