@@ -1,7 +1,6 @@
 "use client";
 import { User } from "@prisma/client";
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,27 +12,27 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CalendarIcon, Globe, Mail } from "lucide-react";
+import { CalendarIcon, Globe } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useConnection } from "@solana/wallet-adapter-react";
+const DynamicWalletButton = dynamic(() => import("./DynamicWalletButton"), {
+  ssr: false,
+});
 
 const PublicPage = ({ user }: { user: User }) => {
-  console.log(user);
-  const [amount, setAmount] = useState("");
-
-  const handlePayment = () => {
-    // Implement payment logic here
-    console.log(
-      `Processing payment of ${amount} for ${user.firstName} ${user.lastName}`
-    );
-  };
+  const [amount, setAmount] = useState(0.01);
+  
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="h-full bg-gray-100">
       <div className="relative h-64 w-full">
-        {user.bannerImage&&<img
-          src={user.bannerImage}
-          alt="Banner"
-          className="h-full w-full object-cover"
-        />}
+        {user.bannerImage && (
+          <img
+            src={user.bannerImage}
+            alt="Banner"
+            className="h-full w-full object-cover"
+          />
+        )}
       </div>
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
@@ -61,9 +60,7 @@ const PublicPage = ({ user }: { user: User }) => {
         <div className="mt-6 sm:mt-8">
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>
-                About {user.firstName}
-              </CardTitle>
+              <CardTitle>About {user.firstName}</CardTitle>
               <CardDescription>{user.bio}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -90,12 +87,10 @@ const PublicPage = ({ user }: { user: User }) => {
                 type="number"
                 placeholder="Enter amount"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(Number(e.target.value))}
                 className="w-full"
               />
-              <Button onClick={handlePayment} className="w-full">
-                Support {user.firstName}
-              </Button>
+              <DynamicWalletButton amount={amount} user={user} />
             </CardFooter>
           </Card>
         </div>

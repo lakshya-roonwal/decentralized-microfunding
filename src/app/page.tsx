@@ -46,17 +46,8 @@ export default function Home() {
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
-                <motion.div>
-                  <Input
-                    className="max-w-lg flex-1"
-                    placeholder="Enter your username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </motion.div>
                 <Button className="w-full" size="lg">
-                  Get Started
+                  Start Your Page
                 </Button>
               </div>
             </div>
