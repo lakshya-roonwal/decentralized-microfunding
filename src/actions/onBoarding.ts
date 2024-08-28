@@ -1,6 +1,7 @@
 "use server"
 import prisma from "@/utils/db";
-import { auth } from "@clerk/nextjs/server";
+import { currentUser } from '@clerk/nextjs/server'
+
 import { revalidatePath } from "next/cache";
 
 
@@ -12,8 +13,9 @@ export const onBoardUser=async(userFormData:{
   socialLink:string;
   walletAddress:string;
 })=>{
-    const { userId } = auth();
-    if (!userId) {
+    const user = await currentUser();
+    console.log(user);
+    if (!user?.id) {
         return {
             sucess:false,
             message:"User not Authenticated"
@@ -21,7 +23,7 @@ export const onBoardUser=async(userFormData:{
     };
     
     const res=await prisma.user.update({
-        where:{id:userId},
+        where:{id:user?.id},
         data:{
             firstName:userFormData.firstName,
             lastName:userFormData.lastName,
@@ -42,3 +44,4 @@ export const onBoardUser=async(userFormData:{
         message:"Onboarded Successfully"
     }
 }
+    

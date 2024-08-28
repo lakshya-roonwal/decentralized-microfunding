@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CalendarIcon, Globe, Mail } from "lucide-react"
+import BannerEditor from './_components/BannerEditor';
 
 
 const Profile = async () => {
@@ -31,13 +32,7 @@ const Profile = async () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="relative h-64 w-full">
-        {user.bannerImage&&<img
-          src={user.bannerImage}
-          alt="Banner"
-          className="h-full w-full object-cover"
-        />}
-      </div>
+      <BannerEditor initialImageUrl={user.bannerImage}/>
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
           <div className="flex">
