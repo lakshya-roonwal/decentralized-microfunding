@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { UserButton } from "@clerk/nextjs";
 
 const links = [
   {
@@ -81,22 +82,8 @@ export default function RootLayout({
               ))}
             </div>
           </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: "Lakshya Runwal",
-                href: "#",
-                icon: (
-                  <Image
-                    src="/path/to/avatar.png"
-                    className="h-7 w-7 flex-shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar"
-                  />
-                ),
-              }}
-            />
+          <div className="flex items-center justify-between gap-2">
+            <UserButton/>
           </div>
         </SidebarBody>
       </Sidebar>
