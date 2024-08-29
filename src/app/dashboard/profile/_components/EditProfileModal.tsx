@@ -130,7 +130,7 @@ export default function EditProfileModal({ userData }: EditProfileModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline" className='mt-6'>Edit Profile</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] md:max-w-[600px] w-full h-full sm:h-auto sm:max-h-[90vh] p-0">
         <ScrollArea className="w-full h-full max-h-screen sm:max-h-[calc(90vh-2rem)]">

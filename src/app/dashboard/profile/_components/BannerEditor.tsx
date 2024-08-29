@@ -22,7 +22,7 @@ export default function BannerEditor({ initialImageUrl, height = "300px" }: Noti
   const [imageUrl, setImageUrl] = useState(initialImageUrl);
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [tempUrl, setTempUrl] = useState(imageUrl);
+  const [tempUrl, setTempUrl] = useState(initialImageUrl);
 
   const handleUrlChange = async() => {
     setImageUrl(tempUrl);
@@ -67,6 +67,9 @@ export default function BannerEditor({ initialImageUrl, height = "300px" }: Noti
               <DialogHeader>
                 <DialogTitle>Change Banner Image</DialogTitle>
               </DialogHeader>
+              <div className='w-full h-full'>
+                <img src={tempUrl} className='rounded-md'/>
+              </div>
               <div className="flex items-center space-x-2">
                 <Input
                   type="text"

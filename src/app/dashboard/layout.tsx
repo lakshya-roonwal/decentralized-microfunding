@@ -1,17 +1,14 @@
 "use client"
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import {
-  IconBrandTabler,
-  IconUserBolt,
-  IconCurrencySolana,
-  IconArrowLeft,
-} from "@tabler/icons-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
+import {
+  IconBrandTabler,
+  IconUserBolt
+} from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
 
 const links = [
   {
@@ -23,11 +20,6 @@ const links = [
     label: "Profile",
     href: "/dashboard/profile",
     icon: <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
-  },
-  {
-    label: "Transections",
-    href: "/dashboard/transections",
-    icon: <IconCurrencySolana className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
   },
 ];
 
