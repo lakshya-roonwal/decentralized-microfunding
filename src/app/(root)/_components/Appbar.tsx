@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import { useWallet } from "@solana/wallet-adapter-react";
 import {
   WalletDisconnectButton,
@@ -9,16 +10,11 @@ const Appbar = () => {
   const { publicKey } = useWallet();
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="shadow-md fixed z-20 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <a href="#" className="text-xl font-bold text-gray-900">
-              Logo
-            </a>
-          </div>
+        <div className="flex justify-end items-center h-16">
           <div>
-            {publicKey ? <WalletDisconnectButton  /> : <WalletMultiButton />}
+            {publicKey ? <WalletDisconnectButton className={"text-blue-700"}  /> : <WalletMultiButton className={buttonVariants({ variant: "outline" })} />}
           </div>
         </div>
       </div>

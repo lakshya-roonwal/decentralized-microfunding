@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* *{outline:1px solid black;} */
+
 /* General scrollbar styles */
 ::-webkit-scrollbar {
   width: 12px; /* Width of the scrollbar */

@@ -27,7 +27,7 @@ const DynamicWalletButton = ({ amount, user }: { amount: number; user: User }) =
       value: { blockhash, lastValidBlockHeight },
     } = await connection.getLatestBlockhashAndContext();
     
-
+    
 
     const signature = await sendTransaction(transaction, connection, {
       minContextSlot,
