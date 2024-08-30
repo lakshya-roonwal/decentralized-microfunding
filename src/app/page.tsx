@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Code, Palette, Users, Coins } from 'lucide-react'
 import Link from 'next/link'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 
 export default function Home() {
   const [username, setUsername] = useState('')
@@ -22,9 +23,13 @@ export default function Home() {
           <span className="ml-2 text-lg font-bold">MicroFund</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          {/* TODO : CHANGE IF ALREADY AUTHENTICATED */}
+          <SignedIn>
+          <Link className={buttonVariants({ variant: "default" })} href={"/dashboard"}>Dashboard</Link>  
+          </SignedIn>
+          <SignedOut>
           <Link className={buttonVariants({ variant: "outline" })} href={"sign-in"}>Log In</Link>
           <Link className={buttonVariants({ variant: "default" })} href={"sign-up"}>Sign Up</Link>
+          </SignedOut>
         </nav>
       </header>
       <main className="flex-1">
@@ -46,9 +51,12 @@ export default function Home() {
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
-                <Button className="w-full" size="lg">
-                  Start Your Page
-                </Button>
+              <SignedIn>
+                <Link className={buttonVariants({ variant: "default",className:"w-full max-w-sm space-y-2" })} href={"/dashboard/profile"}>Customize Your Page</Link>
+              </SignedIn>
+              <SignedOut>
+              <Link className={buttonVariants({ variant: "default",className:"w-full max-w-sm space-y-2" })} href={"/sign-up"}>Start Your Page</Link>
+              </SignedOut>
               </div>
             </div>
           </motion.div>

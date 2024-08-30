@@ -24,7 +24,7 @@ const PublicPage = ({ user }: { user: User }) => {
   
 
   return (
-    <div className="h-full bg-gray-100">
+    <div className="h-screen bg-gray-100">
       <div className="relative h-64 w-full">
         {user.bannerImage && (
           <img
