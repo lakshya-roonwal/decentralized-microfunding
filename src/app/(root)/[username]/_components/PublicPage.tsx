@@ -15,20 +15,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarIcon, Globe } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useConnection } from "@solana/wallet-adapter-react";
+import Image from "next/image";
 const DynamicWalletButton = dynamic(() => import("./DynamicWalletButton"), {
   ssr: false,
 });
 
 const PublicPage = ({ user }: { user: User }) => {
+  console.log("🚀 ~ PublicPage ~ user:", user)
   const [amount, setAmount] = useState(0.01);
+  
   
 
   return (
     <div className="h-screen bg-gray-100">
       <div className="relative h-64 w-full">
         {user.bannerImage && (
-          <img
+          <Image
             src={user.bannerImage}
+            fill
             alt="Banner"
             className="h-full w-full object-cover"
           />
@@ -39,7 +43,7 @@ const PublicPage = ({ user }: { user: User }) => {
           <div className="flex">
             <Avatar className="h-24 w-24 ring-4 ring-white sm:h-32 sm:w-32">
               <AvatarImage
-                src={user.profileImage ?? undefined}
+                src={user.profileImage || ""}
                 alt={`${user.firstName} ${user.lastName}`}
               />
               <AvatarFallback>

@@ -4,9 +4,12 @@ import prisma from '@/utils/db'
 
 export async function POST(request: Request) {
   const payload: WebhookEvent = await request.json()
+  console.log("Payload Started")
   console.log(payload)
 
-  if (payload.type === 'user.created') {
+  if (payload.type === "user.created") {
+    console.log('user started');
+    
     // create user in prisma db
     const user = await prisma.user.create({
       data: {

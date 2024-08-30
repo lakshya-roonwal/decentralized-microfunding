@@ -39,6 +39,9 @@ const DynamicWalletButton = ({ amount, user }: { amount: number; user: User }) =
         lastValidBlockHeight,
         signature,
       });
+      toast({
+        title:"Transection Successful"
+      })
       setTxSignature(signature);
     } catch (error) {
 
