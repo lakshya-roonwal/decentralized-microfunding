@@ -48,7 +48,3 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ message: 'Webhook processed successfully' },{status:200})
 }
-
-export async function GET() {
-  return Response.json({ message: 'Hello World!' })
-}
