@@ -68,7 +68,7 @@ export default function BannerEditor({ initialImageUrl, height = "300px" }: Noti
                 <DialogTitle>Change Banner Image</DialogTitle>
               </DialogHeader>
               <div className='w-full h-full'>
-                <img src={tempUrl} className='rounded-md'/>
+                <img src={tempUrl} className='rounded-md aspect-[6/1] object-cover'/>
               </div>
               <div className="flex items-center space-x-2">
                 <Input
