@@ -32,7 +32,41 @@ export default function Overview({user}:{user:User}) {
   
   const shareLink = `${process.env.NEXT_PUBLIC_URL}${user.username}`;
   const shareText = `${shareLink}`;
-  const codeSnippet = `<iframe src="${shareLink}" width="100%" height="500px"></iframe>`;
+  const codeSnippet = `
+  <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: '1000' }}>
+      <a
+        href="${process.env.NEXT_PUBLIC_URL}${user.username}"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '64px',
+          height: '64px',
+          backgroundColor: '#ffffff',
+          borderRadius: '50%',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ color: '#3B82F6' }} // Adjust the color as needed
+        >
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </a>
+    </div>
+  `;
 
   return (
     <Card className="w-full max-w-3xl mx-auto">
