@@ -7,7 +7,7 @@ export default function RootLayout({
         <div className="h-screen w-full flex">
         <div className="w-1/2 h-full hidden md:block">
             <img 
-            src="https://images.pexels.com/photos/7788007/pexels-photo-7788007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src="https://cdn.wallpapersafari.com/78/58/C27luA.jpg"
             className="w-full h-full object-cover object-[20%]"
              alt="" />
         </div>

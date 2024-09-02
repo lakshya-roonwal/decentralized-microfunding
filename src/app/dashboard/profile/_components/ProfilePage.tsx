@@ -8,9 +8,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CalendarIcon, Globe, Mail } from "lucide-react"
 import BannerEditor from './BannerEditor';
 import EditProfileModal from './EditProfileModal';
+import { useToast } from '@/components/ui/use-toast';
+import { title } from 'process';
 
 
 const ProfilePage = ({user}: {user: User; }) => {
+  const {toast}=useToast();
   const [amount, setAmount] = useState('');
 
   return (
@@ -75,7 +78,12 @@ const ProfilePage = ({user}: {user: User; }) => {
                 onChange={(e) => setAmount(e.target.value)}
                 className="w-full"
               />
-              <Button className="w-full" disabled={!amount}>
+              <Button className="w-full" disabled={!amount} onClick={()=>{
+                toast({
+                  title:"This is only preview",
+                  description: "This is only the preview of how the Final page will look go to your page to pay",
+                })
+              }}>
                 Pay {amount} SOL
               </Button>
             </CardFooter>
