@@ -30,9 +30,8 @@ const PublicPage = ({ user }: { user: User }) => {
     <div className="h-screen bg-gray-100">
       <div className="relative h-64 w-full">
         {user.bannerImage && (
-          <Image
+          <img
             src={user.bannerImage}
-            fill
             alt="Banner"
             className="h-full w-full object-cover"
           />

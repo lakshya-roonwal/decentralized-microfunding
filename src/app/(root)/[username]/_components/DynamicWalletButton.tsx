@@ -5,15 +5,18 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { User } from "@prisma/client";
 import { useToast } from '@/components/ui/use-toast';
 import { title } from 'process';
+import Spinner from '@/components/Spinner';
 
 const DynamicWalletButton = ({ amount, user }: { amount: number; user: User }) => {
   const {toast}=useToast();
   const { connection } = useConnection();
   const { publicKey ,sendTransaction} = useWallet();
   const [txSignature, setTxSignature] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handlePayment = async() => {
     try {
+      setLoading(true);
       console.log(
         `Processing payment of ${amount} for ${user.firstName} ${user.lastName} in wallet ${user.walletAddress}`
       );
@@ -52,6 +55,9 @@ const DynamicWalletButton = ({ amount, user }: { amount: number; user: User }) =
       })
       // Optionally, you can set an error state or show a notification to the user
     }
+    finally{
+      setLoading(false)
+    }
   };
 
   return (
@@ -61,6 +67,7 @@ const DynamicWalletButton = ({ amount, user }: { amount: number; user: User }) =
       className="w-full"
     >
       {publicKey ? `Pay ${amount} SOL` : "Please connect wallet"}
+      {loading&&<Spinner/>}
     </Button>
   );
 };
