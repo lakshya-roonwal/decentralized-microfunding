@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
       const user = await prisma.user.create({
         data: {
           id: payload.data.id,
-          firstName:payload?.data?.first_name as string,
-          lastName:payload?.data?.last_name as string,
+          firstName:payload?.data?.first_name as string?payload?.data?.first_name as string:"",
+          lastName:payload?.data?.last_name as string?payload?.data?.last_name as string:"",
           email: payload.data.email_addresses[0].email_address,
           username: payload.data.username ?? "",
           profileImage: payload.data.image_url
